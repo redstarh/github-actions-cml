@@ -10,13 +10,12 @@ jobs:
       - name: Train model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        working-directory: ./work
         run: |
           pip install -r requirements.txt
           echo "## MODEL METRICS" > report.md
-          cat ./work/metrics.txt >> report.md
+          cat /home/runner/work/github-actions-cml/github-actions-cml/metrics.txt >> report.md
 
           echo 'My first CML report' > report.md
-          echo '![](./work/feature_importance.png)' >> report.md
-          echo '![](./work/residuals.png)' >> report.md
+          echo '![](/home/runner/work/github-actions-cml/github-actions-cml/feature_importance.png)' >> report.md
+          echo '![](/home/runner/work/github-actions-cml/github-actions-cml/residuals.png)' >> report.md
           cml comment create --publish report.md
