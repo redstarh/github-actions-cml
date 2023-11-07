@@ -12,11 +12,10 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pip install -r requirements.txt
-          python train.py --output feature_importance.png
           echo "## MODEL METRICS" > report.md
           cat metrics.txt >> report.md
 
-          echo "### Data viz" >> report.md
-          echo "![](./feature_importance.png)" >> report.md
-          echo "![](./residuals.png)" >> report.md
-          cml comment create report.md
+          echo "## Data viz" >> report.md
+          cml-publish feature_importance.png --md >> report.md
+          cml-publish residuals.png --md >> report.md
+          cml-send-comment report.md
