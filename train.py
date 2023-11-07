@@ -12,7 +12,7 @@ seed = 42
 ################################
 
 # Load in the data
-df = pd.read_csv("./workdir/winequality-red.csv")
+df = pd.read_csv("winequality-red.csv")
 
 # Split into train and test sections
 y = df.pop("quality")
@@ -32,7 +32,7 @@ train_score = regr.score(X_train, y_train) * 100
 test_score = regr.score(X_test, y_test) * 100
 
 # Write scores to a file
-with open("./workdir/metrics.txt", 'w') as outfile:
+with open("metrics.txt", 'w') as outfile:
         outfile.write("Training variance explained: %2.1f%%\n" % train_score)
         outfile.write("Test variance explained: %2.1f%%\n" % test_score)
 
@@ -57,7 +57,7 @@ ax.set_ylabel('Feature', fontsize = axis_fs)#ylabel
 ax.set_title('Random forest\nfeature importance', fontsize = title_fs)
 
 plt.tight_layout()
-plt.savefig("./workdir/feature_importance.png",dpi=120)
+plt.savefig("feature_importance.png",dpi=120)
 plt.close()
 
 
@@ -81,4 +81,4 @@ plt.ylim((2.5,8.5))
 plt.xlim((2.5,8.5))
 
 plt.tight_layout()
-plt.savefig("./workdir/residuals.png",dpi=120)
+plt.savefig("residuals.png",dpi=120)
