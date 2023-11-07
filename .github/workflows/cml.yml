@@ -10,6 +10,7 @@ jobs:
       - name: Train model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          working-directory: ./workdir
         run: |
           pip install -r requirements.txt
           echo "## MODEL METRICS" > report.md
@@ -19,3 +20,4 @@ jobs:
           echo '![](./feature_importance.png)' >> report.md
           echo '![](./residuals.png)' >> report.md
           cml comment create --publish report.md
+        working-directory: ${{ env.working-directory }}
