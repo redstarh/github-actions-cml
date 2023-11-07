@@ -12,6 +12,7 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pip install -r requirements.txt
+          python train.py
           echo "## MODEL METRICS" > report.md
           echo '![](./metrics.txt)' >> report.md
           echo '![](./feature_importance.png)' >> report.md
